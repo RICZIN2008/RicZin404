@@ -1,327 +1,312 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Interativa</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: sans-serif;
-      background: url('https://github.com/RICZIN2008/Midia/raw/main/giphy.gif') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
-      overflow: hidden;
-    }
-    .neve {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 100;
-    }
-    .neve span {
-      position: absolute;
-      display: block;
-      width: 5px;
-      height: 5px;
-      background: #c57eff;
-      border-radius: 50%;
-      animation: cair linear infinite;
-      opacity: 0.8;
-    }
-    @keyframes cair {
-      0% {
-        transform: translateY(-100px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(100vh);
-        opacity: 1;
-      }
-    }
-    .ip-box {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 10px 20px;
-      border-radius: 10px;
-      z-index: 101;
-    }
-    .center {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
-    }
-    .foto {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .foto img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .links-sociais {
-      margin-top: 10px;
-      font-size: 12px;
-      display: flex;
-      gap: 20px;
-    }
-    .links-sociais a {
-      color: white;
-      text-decoration: none;
-    }
-    .conteudo {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      margin-top: 40px;
-    }
-    .menu {
-      display: none;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      flex-direction: column;
-      gap: 10px;
-      cursor: pointer;
-      z-index: 1001;
-    }
-    .barra {
-      width: 40px;
-      height: 5px;
-      background: white;
-    }
-    .menu-categorias {
-      display: none;
-      position: absolute;
-      top: 50px;
-      right: 10px;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 10px;
-      border-radius: 5px;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 1000;
-    }
-    .menu-categorias .categoria {
-      cursor: pointer;
-      background: rgba(0,0,0,0.6);
-      padding: 5px 10px;
-      border-radius: 4px;
-    }
-    .nomes {
-      display: none;
-      margin-top: 5px;
-      flex-direction: column;
-      gap: 5px;
-    }
-    .categoria.ativa .nomes {
-      display: flex;
-    }
-    .botoes {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 5px;
-      padding: 10px;
-      z-index: 10;
-    }
-    .botoes button, .nomes div {
-      padding: 10px 15px;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.2);
-      border: none;
-      border-radius: 5px;
-      color: white;
-    }
-    .botao-fundo-container {
-      position: fixed;
-      top: 80px;
-      left: 10px;
-      z-index: 1001;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .botao-fundo, .botao-musica {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 24px;
-    }
-    .botao-musica.hidden {
-      display: none;
-    }
-    .seletor-fundo {
-      position: fixed;
-      top: 140px;
-      left: 10px;
-      background: rgba(0,0,0,0.7);
-      padding: 10px;
-      border-radius: 10px;
-      display: none;
-      flex-direction: column;
-      color: white;
-      gap: 5px;
-      z-index: 1000;
-    }
-    .seletor-fundo h3 {
-      margin: 0 0 5px;
-    }
-    .seletor-fundo .opcao {
-      margin-left: 10px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-  <div class="neve"></div>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Insert title here</title>
+    </head>
+    <body>
+        <p>
+            开始start
+        </p>
 
-  <div class="ip-box" id="ip" style="display: none;">Carregando IP...</div>
+        <p>
+            <br/>
+        </p>
 
-  <div class="menu" onclick="toggleMenu()">
-    <div class="barra"></div>
-    <div class="barra"></div>
-    <div class="barra"></div>
-  </div>
+        <p>
+            引用
+        </p>
 
-  <div class="botao-fundo-container">
-    <div class="botao-fundo" onclick="toggleSeletorFundo()">📷</div>
-    <div class="botao-musica" id="botaoMusica" onclick="abrirMusica()">🎵</div>
-  </div>
+        <blockquote><p>这是一个引用</p></blockquote>
 
-  <div class="seletor-fundo">
-    <h3>Fundo</h3>
-    <div><strong>GIF</strong></div>
-    <div class="opcao" onclick="trocarFundo('https://github.com/RICZIN2008/Midia/raw/main/giphy.gif')">Gif 1</div>
-    <div class="opcao" onclick="trocarFundo('https://example.com/gif2.gif')">Gif 2</div>
-    <div><strong>Foto</strong></div>
-    <div class="opcao" onclick="trocarFundo('https://github.com/RICZIN2008/Midia/raw/main/images_1962af409d2.jpeg')">Foto 1</div>
-    <div class="opcao" onclick="trocarFundo('https://example.com/foto2.jpg')">Foto 2</div>
-  </div>
+        <p>
+            <br/>
+        </p>
 
-  <div class="menu-categorias">
-    <div class="categoria" onclick="toggleCategoria(this)">Consultar dados
-      <div class="nomes">
-        <div onclick="window.open('https://consultanumero.abrtelecom.com.br/consultanumero/consulta/consultaSituacaoAtualCtg')">Número</div>
-        <div onclick="window.open('https://servicos.receita.fazenda.gov.br/Servicos/CPF/ConsultaSituacao/ConsultaPublica.asp')">CPF</div>
-        <div onclick="window.open('https://solucoes.receita.fazenda.gov.br/servicos/cnpjreva/cnpjreva_solicitacao.asp')">CNPJ</div>
-        <div onclick="window.open('https://riczin2008.github.io/IP/')">IP</div>        
-      </div>
-    </div>
-    <div class="categoria" onclick="toggleCategoria(this)">PIX fake
-      <div class="nomes">
-        <div onclick="window.open('https://link4.com')">Inter</div>
-        <div onclick="window.open('https://link5.com')">Pagbank</div>
-        <div onclick="window.open('https://link6.com')">PicPay</div>
-      </div>
-    </div>
-    <div class="categoria" onclick="toggleCategoria(this)">Notas falsas
-      <div class="nomes">
-        <div onclick="window.open('https://www.mediafire.com/file/gwn83fr0p26kdy5/RicZin+2+reais+antiga.pdf/file')">RicZin 2 reais.pdf</div>
-        <div onclick="window.open('https://www.mediafire.com/file/faz5pqmbwy0m8y3/RicZin+de+10+reais+antiga.pdf/file')">RicZin 10 reais.pdf</div>
-        <div onclick="window.open('https://www.mediafire.com/file/c652huhpallhwdr/RicZin+20+reais+marcada.pdf/file')">RicZin 20 reais.pdf</div>
-      </div>
-    </div>
-  </div>
+        <p>
+            引用
+        </p>
 
-  <div class="center">
-    <div class="foto" onclick="mostrarConteudo()">
-      <img src="https://github.com/RICZIN2008/Midia/raw/main/IMG_20250409_100709_850.jpg" alt="Foto Central">
-    </div>
-    <div class="links-sociais">
-      <a href="https://www.instagram.com/ric_zin_7?igsh=MTBwazVsYnAyNDAxZQ==" target="_blank">Instagram</a>
-      <a href="https://www.youtube.com/@TD7-OFF" target="_blank">YouTube</a>
-    </div>
+        <blockquote><p>这是一个很长的引用阿萨德发生发顺丰打算发送打法是否大三大法师发送到发送发送到发送到发顺丰大师傅打算打法是否打手的打算发送到发送打法是否大师的发送到发送到发送到发送到发放</p></blockquote>
 
-    <div class="conteudo">
-      <div class="botoes">
-        <button onclick="window.open('https://riczin2008.github.io/Doacao/')">Fazer doação</button>
-        <button onclick="window.open('https://chat.whatsapp.com/HZnkHg6EmbtIFaXlYXaOBn')">Grupo</button>
-        <button onclick="window.open('https://link3.com')">Contato</button>
-      </div>
-    </div>
-  </div>
+        <p>
+            <br/>
+        </p>
 
-  <script>
-    function mostrarIP() {
-      fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('ip').innerText = `IP: ${data.ip}`;
-        });
-    }
+        <p>
+            line-through
+        </p>
+        <p>
+            <strike>
+                让我色如果他v
+            </strike>
+        </p>
 
-    function toggleCategoria(element) {
-      element.classList.toggle('ativa');
-    }
+        <p>
+            <br/>
+        </p>
 
-    function mostrarConteudo() {
-      document.querySelector('.foto').style.display = 'none';
-      document.querySelector('.conteudo').style.display = 'flex';
-      document.querySelector('.menu').style.display = 'flex';
-      document.querySelector('.ip-box').style.display = 'block';
-      mostrarIP();
-    }
+        <p>
+            标题1
+        </p>
 
-    function toggleMenu() {
-      const menu = document.querySelector('.menu-categorias');
-      menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
-    }
+        <h1>
+            标题1
+        </h1>
 
-    function criarNeve() {
-      const neveContainer = document.querySelector('.neve');
-      for (let i = 0; i < 100; i++) {
-        const floco = document.createElement('span');
-        floco.style.left = Math.random() * 100 + '%';
-        floco.style.animationDuration = (Math.random() * 5 + 5) + 's';
-        floco.style.animationDelay = (Math.random() * 5) + 's';
-        neveContainer.appendChild(floco);
-      }
-    }
+        <p>
+            标题1 斜体 粗体
+        </p>
 
-    function toggleSeletorFundo() {
-      const seletor = document.querySelector('.seletor-fundo');
-      const botaoMusica = document.getElementById('botaoMusica');
-      const linksSociais = document.querySelector('.links-sociais');
-      const visivel = seletor.style.display === 'flex';
+        <h1>sdga<b>dsg</b>sg<i>sasdfafd</i>sg</h1>
 
-      seletor.style.display = visivel ? 'none' : 'flex';
-      botaoMusica.style.display = visivel ? 'flex' : 'none';
-      linksSociais.style.display = visivel ? 'flex' : 'none';
-    }
+        <p>
+            <br/>
+        </p>
 
-    function trocarFundo(url) {
-      document.body.style.background = `url('${url}') no-repeat center center fixed`;
-      document.body.style.backgroundSize = 'cover';
-    }
+        <p>
+            有序段落
+        </p>
 
-    function abrirMusica() {
-      window.open('https://link-da-musica.com');
-    }
+        <ol>
+            <li>
+                111
+                <ul>
+                    <li>
+                        444
+                    </li>
+                    <li>
+                        555
+                        <ol>
+                            <li>
+                                777
+                            </li>
+                            <li>
+                                888
+                            </li>
+                            <li>
+                                999
+                            </li>
+                        </ol>
+                    </li>
+                    <li>
+                        666
+                    </li>
+                </ul>
+            </li>
+            <li>
+                222
+            </li>
+            <li>
+                333
+            </li>
+        </ol>
+        <p>
+            <br/>
+        </p>
+        <p>
+            无序段落
+        </p>
 
-    window.onload = criarNeve;
-  </script>
-</body>
-  </html>
+        <ul>
+            <li>
+                444
+            </li>
+            <li>
+                555
+            </li>
+            <li>
+                666
+            </li>
+        </ul>
+
+        <p>
+            <br/>
+        </p>
+
+        <p>
+            加粗和斜体
+        </p>
+        <p>
+            123<strong>加粗</strong>456<em>abc</em>789
+        </p>
+        <p>
+            <br/>
+        </p>
+        <p>
+            超链接
+        </p>
+        <p>
+            超链接1<a href="http://www.baidu.com" target="_self" title="百度">3579</a>
+        </p>
+        <p>
+            超链接2<a href="http://www.baidu.com" target="_self" title="百度">4680</a>
+        </p>
+        <p>
+            <br/>
+        </p>
+
+        <p>
+            图片(ktplay)
+        </p>
+        <p>
+            <img src="http://testdwimg.ktplay.cn:8000/group1/M00/4B/39/wKiLDVizk-yATRSMAAD9iBkAw441901181" title="" alt="demo.jpg"/>
+        </p>
+        <p>
+            <br/>
+        </p>
+        <p>
+            <strong>
+                这是一段话这是一段话这是一段话
+            </strong>
+            这是一段话这是一段话这是一段话这是一段话这是一段话这是一段话这是一段话这是一段话这是一段话这是一段话这是
+        </p>
+        <ul>
+            <li>
+                webview
+            </li>
+            <li>
+                coretext
+            </li>
+        </ul>
+        <p>
+            这是另外的段话这是另外的段话这是另外的段话这是另外的段话这是另外的段话
+        </p>
+        <p>
+            这又是一段话
+        </p>
+        <blockquote>
+            <span>
+                全会提出了开全会提出了开全会提出了开全会提出了开全会提出了开全会提出了开全会提出了开全会提出了开全会提出了开全会提出了开全会提出了开全会提出了开全会提出了开
+            </span>
+        </blockquote>
+        <p>
+            十八届三中全会提出了开放单独二孩。不过，并没有采取社会成本最低的全国统一放开方案，而是让各省份向卫计委上报方案、待审批通过后各省份独立实行，实际上就是分批实施。
+        </p>
+        <div class="jpg">
+            <img src="https://dwimg.ktplay.cn/group3/M01/33/A3/CgIAWlikDs2Ae0NCAAA6TGdACr40478351"
+                    alt="jpg" > </img>
+        </div>
+        <p>
+            有望2014年上半年实施的省份。
+            <a href="http://www.baidu.com?index=2">
+                链接2很长、很长、导致换行
+            </a>
+            湖北：“单独两孩“方案已于1月26日获“备案“通过，“有望在3月份启动实施“。贵州：“拟于今年3月或5月对《贵州省人口与计划生育条例》进行修订“，之后再启动实施。黑龙江：“最快将在4月份地方性法规修改通过后实施，最迟也将在上半年5、6月份实施“。河北：“力争今年6月启动实施“。青海：“将于今年上半年落地“
+        </p>
+
+        <p>
+            预计2014年（下半年）或更晚实施的省份。吉林：“相关政策预计在下半年出台“。辽宁：“启动了《辽宁省人口与计划生育条例》修订程序，年内完成修订工作“
+        </p>
+        <p>
+            《王者荣耀》是一款快节奏的在线竞技手游，很多玩家都迫不及待的想要快速推塔。其实游戏中有些英雄是可以来带节奏的。玩家们可以利用各英雄在前、中、后期的优势来上王者。今天小编主要和大家分享下王者荣耀英雄打法攻略，会为玩家详细讲解每个英雄的打法技巧，希望可以对玩家有帮助。
+
+        </p>
+
+        <p>
+            技能展示图片
+        </p>
+        <div class="jpg">
+            <img src="http://hiphotos.baidu.com/doc/pic/item/a1ec08fa513d2697031aed2c5dfbb2fb4216d8f2.jpg"
+                    alt="jpg" width=300 height=192/>
+        </div>
+        <ol>
+            <li>
+                爆发能力最高的英雄
+            </li>
+            <ol>
+                <li>
+                    高渐离（团战爆发）
+                </li>
+                <li>
+                    荆科（团战爆发）
+                </li>
+                <li>
+                    刘备（贴身最高）
+                </li>
+                <li>
+                    晕的到或冻的住的安琪拉和王昭君
+                </li>
+                <li>
+                    姜子牙（超远秒杀adc）
+                </li>
+                <ol>
+                    <li>
+                        敏
+                    </li>
+                    <li>
+                        魔
+                    </li>
+                </ol>
+            </ol>
+            <li>
+                远程消耗能力
+            </li>
+            <ol>
+                <li>
+                    姜子牙（不解释了）
+                </li>
+                <li>
+                    武则天和赢朕（有钱人还看攻略？）
+                </li>
+                <li>
+                    孙尚香虞姬（1技能消耗棒棒哒）
+                </li>
+                <li>
+                    李白
+                </li>
+                <ol>
+                    <li>
+                        111
+                    </li>
+                    <ol>
+                        <li>
+                            aaa
+                        </li>
+                        <li>
+                            bbb
+                        </li>
+                    </ol>
+                    <li>
+                        222
+                    </li>
+                </ol>
+            </ol>
+            <li>
+                最能1v5系列：
+            </li>
+            <ol>
+                <li>
+                    貂蝉
+                </li>
+                <li>
+                    露娜
+                </li>
+                <li>
+                    李白（会玩1v5，不会玩10步送一人头）
+                </li>
+            </ol>
+            <li>
+                支援能力系列
+            </li>
+            <ol>
+                <li>
+                    韩信宫本花木兰（位移）
+                </li>
+                <li>
+                    亚瑟（跑的快）
+                </li>
+                <li>
+                    刘邦（唯一传送）
+                </li>
+                <li>
+                    孙膑（群体加速，老司机）
+                </li>
+            </ol>
+        </ol>
+        <blockquote>
+            最强英雄，庄周，毫无悬念，征召模式非ban必选。一个好的庄周总能让战场被动化为主动～大招解控和免伤无疑是核心技能～出个冰帐如果没三段位移～基本跑不了。核心技能，大招。核心装备，冰帐。王者局出场率非常高。
+        </blockquote>
+    </body>
+                  </html>
   
